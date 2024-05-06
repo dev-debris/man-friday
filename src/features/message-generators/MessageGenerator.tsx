@@ -17,7 +17,7 @@ interface Keyword {
 const MessageGenerator = ({
   onSubmit,
 }: {
-  onSubmit?: (mode: GeneratingMode, keywords: string[]) => void;
+  onSubmit?: (args: { mode: GeneratingMode; keywords: string[] }) => void;
 }) => {
   const [mode, setMode] = useState<GeneratingMode>('friend');
   const [keywords, setKeywords] = useState<Keyword[]>([]);
@@ -43,7 +43,7 @@ const MessageGenerator = ({
 
   const handleClickToGenerate = () => {
     const keywordValues = keywords.map((keyword) => keyword.value);
-    onSubmit?.(mode, keywordValues);
+    onSubmit?.({ mode, keywords: keywordValues });
   };
 
   return (
