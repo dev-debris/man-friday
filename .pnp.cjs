@@ -28,6 +28,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./",\
         "packageDependencies": [\
           ["@testing-library/react", "virtual:e0478416ed750e349274d10a631ee6629f4af8511b5634886a9cbc4e929b22df4936ec8cdddf4bdb44a95e0565138c62a35055da21540ea4ec411b9f83c5eb3f#npm:15.0.6"],\
+          ["@testing-library/user-event", "virtual:e0478416ed750e349274d10a631ee6629f4af8511b5634886a9cbc4e929b22df4936ec8cdddf4bdb44a95e0565138c62a35055da21540ea4ec411b9f83c5eb3f#npm:14.5.2"],\
           ["@types/node", "npm:20.12.8"],\
           ["@types/react", "npm:18.3.1"],\
           ["@types/react-dom", "npm:18.3.0"],\
@@ -1379,6 +1380,28 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@testing-library/user-event", [\
+      ["npm:14.5.2", {\
+        "packageLocation": "../../.yarn/berry/cache/@testing-library-user-event-npm-14.5.2-ec9587901c-10c0.zip/node_modules/@testing-library/user-event/",\
+        "packageDependencies": [\
+          ["@testing-library/user-event", "npm:14.5.2"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:e0478416ed750e349274d10a631ee6629f4af8511b5634886a9cbc4e929b22df4936ec8cdddf4bdb44a95e0565138c62a35055da21540ea4ec411b9f83c5eb3f#npm:14.5.2", {\
+        "packageLocation": "./.yarn/__virtual__/@testing-library-user-event-virtual-6fc3f63112/3/.yarn/berry/cache/@testing-library-user-event-npm-14.5.2-ec9587901c-10c0.zip/node_modules/@testing-library/user-event/",\
+        "packageDependencies": [\
+          ["@testing-library/user-event", "virtual:e0478416ed750e349274d10a631ee6629f4af8511b5634886a9cbc4e929b22df4936ec8cdddf4bdb44a95e0565138c62a35055da21540ea4ec411b9f83c5eb3f#npm:14.5.2"],\
+          ["@testing-library/dom", null],\
+          ["@types/testing-library__dom", null]\
+        ],\
+        "packagePeers": [\
+          "@testing-library/dom",\
+          "@types/testing-library__dom"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@types/aria-query", [\
       ["npm:5.0.4", {\
         "packageLocation": "../../.yarn/berry/cache/@types-aria-query-npm-5.0.4-51d2b61619-10c0.zip/node_modules/@types/aria-query/",\
@@ -2537,6 +2560,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["chatting-message-generator", "workspace:."],\
           ["@testing-library/react", "virtual:e0478416ed750e349274d10a631ee6629f4af8511b5634886a9cbc4e929b22df4936ec8cdddf4bdb44a95e0565138c62a35055da21540ea4ec411b9f83c5eb3f#npm:15.0.6"],\
+          ["@testing-library/user-event", "virtual:e0478416ed750e349274d10a631ee6629f4af8511b5634886a9cbc4e929b22df4936ec8cdddf4bdb44a95e0565138c62a35055da21540ea4ec411b9f83c5eb3f#npm:14.5.2"],\
           ["@types/node", "npm:20.12.8"],\
           ["@types/react", "npm:18.3.1"],\
           ["@types/react-dom", "npm:18.3.0"],\
