@@ -1448,6 +1448,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vanilla-extract/vite-plugin@npm:^4.0.9":
+  version: 4.0.9
+  resolution: "@vanilla-extract/vite-plugin@npm:4.0.9"
+  dependencies:
+    "@vanilla-extract/integration": "npm:^7.1.3"
+  peerDependencies:
+    vite: ^4.0.3 || ^5.0.0
+  checksum: 10c0/f77fc14a5e34ac39f671130002c85362f7c0888520290b0cf39850151c434c95ade7fd3e54a37cf30879a1643a9c09f45187a4e9e179ed318807d1e28f66fe15
+  languageName: node
+  linkType: hard
+
 "@vanilla-extract/webpack-plugin@npm:^2.3.7":
   version: 2.3.8
   resolution: "@vanilla-extract/webpack-plugin@npm:2.3.8"
@@ -2162,6 +2173,7 @@ __metadata:
     "@types/react-dom": "npm:^18"
     "@vanilla-extract/css": "npm:^1.15.1"
     "@vanilla-extract/next-plugin": "npm:^2.4.0"
+    "@vanilla-extract/vite-plugin": "npm:^4.0.9"
     "@vitejs/plugin-react": "npm:^4.2.1"
     "@yarnpkg/sdks": "npm:^3.1.2"
     eslint: "npm:^8"

@@ -36,6 +36,7 @@ const RAW_RUNTIME_STATE =
           ["@types/react-dom", "npm:18.3.0"],\
           ["@vanilla-extract/css", "npm:1.15.1"],\
           ["@vanilla-extract/next-plugin", "virtual:e0478416ed750e349274d10a631ee6629f4af8511b5634886a9cbc4e929b22df4936ec8cdddf4bdb44a95e0565138c62a35055da21540ea4ec411b9f83c5eb3f#npm:2.4.0"],\
+          ["@vanilla-extract/vite-plugin", "virtual:e0478416ed750e349274d10a631ee6629f4af8511b5634886a9cbc4e929b22df4936ec8cdddf4bdb44a95e0565138c62a35055da21540ea4ec411b9f83c5eb3f#npm:4.0.9"],\
           ["@vitejs/plugin-react", "virtual:e0478416ed750e349274d10a631ee6629f4af8511b5634886a9cbc4e929b22df4936ec8cdddf4bdb44a95e0565138c62a35055da21540ea4ec411b9f83c5eb3f#npm:4.2.1"],\
           ["@yarnpkg/sdks", "npm:3.1.2"],\
           ["eslint", "npm:8.57.0"],\
@@ -1839,6 +1840,29 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@vanilla-extract/vite-plugin", [\
+      ["npm:4.0.9", {\
+        "packageLocation": "../../.yarn/berry/cache/@vanilla-extract-vite-plugin-npm-4.0.9-eac4eb584d-10c0.zip/node_modules/@vanilla-extract/vite-plugin/",\
+        "packageDependencies": [\
+          ["@vanilla-extract/vite-plugin", "npm:4.0.9"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:e0478416ed750e349274d10a631ee6629f4af8511b5634886a9cbc4e929b22df4936ec8cdddf4bdb44a95e0565138c62a35055da21540ea4ec411b9f83c5eb3f#npm:4.0.9", {\
+        "packageLocation": "./.yarn/__virtual__/@vanilla-extract-vite-plugin-virtual-278adf0c83/3/.yarn/berry/cache/@vanilla-extract-vite-plugin-npm-4.0.9-eac4eb584d-10c0.zip/node_modules/@vanilla-extract/vite-plugin/",\
+        "packageDependencies": [\
+          ["@vanilla-extract/vite-plugin", "virtual:e0478416ed750e349274d10a631ee6629f4af8511b5634886a9cbc4e929b22df4936ec8cdddf4bdb44a95e0565138c62a35055da21540ea4ec411b9f83c5eb3f#npm:4.0.9"],\
+          ["@types/vite", null],\
+          ["@vanilla-extract/integration", "npm:7.1.4"],\
+          ["vite", "virtual:e0478416ed750e349274d10a631ee6629f4af8511b5634886a9cbc4e929b22df4936ec8cdddf4bdb44a95e0565138c62a35055da21540ea4ec411b9f83c5eb3f#npm:5.2.11"]\
+        ],\
+        "packagePeers": [\
+          "@types/vite",\
+          "vite"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@vanilla-extract/webpack-plugin", [\
       ["npm:2.3.8", {\
         "packageLocation": "../../.yarn/berry/cache/@vanilla-extract-webpack-plugin-npm-2.3.8-00af522fbb-10c0.zip/node_modules/@vanilla-extract/webpack-plugin/",\
@@ -2660,6 +2684,7 @@ const RAW_RUNTIME_STATE =
           ["@types/react-dom", "npm:18.3.0"],\
           ["@vanilla-extract/css", "npm:1.15.1"],\
           ["@vanilla-extract/next-plugin", "virtual:e0478416ed750e349274d10a631ee6629f4af8511b5634886a9cbc4e929b22df4936ec8cdddf4bdb44a95e0565138c62a35055da21540ea4ec411b9f83c5eb3f#npm:2.4.0"],\
+          ["@vanilla-extract/vite-plugin", "virtual:e0478416ed750e349274d10a631ee6629f4af8511b5634886a9cbc4e929b22df4936ec8cdddf4bdb44a95e0565138c62a35055da21540ea4ec411b9f83c5eb3f#npm:4.0.9"],\
           ["@vitejs/plugin-react", "virtual:e0478416ed750e349274d10a631ee6629f4af8511b5634886a9cbc4e929b22df4936ec8cdddf4bdb44a95e0565138c62a35055da21540ea4ec411b9f83c5eb3f#npm:4.2.1"],\
           ["@yarnpkg/sdks", "npm:3.1.2"],\
           ["eslint", "npm:8.57.0"],\
