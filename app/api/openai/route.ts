@@ -18,7 +18,7 @@ You are speaking to a ${mode}. Given keywords, generate something to say in Kore
         {
           role: 'user',
           content: `# KEYWORDS
-  ${keywords.join(' ')}`,
+${keywords.join(' ')}`,
         },
       ],
     });
