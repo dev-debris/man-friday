@@ -12,6 +12,7 @@
   "dependencies": {
     "@vanilla-extract/css": "^1.15.1",
     "next": "14.2.3",
+    "openai": "^4.41.0",
     "react": "^18",
     "react-dom": "^18",
     "vite": "^5.2.11"
