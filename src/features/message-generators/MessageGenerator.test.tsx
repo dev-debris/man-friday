@@ -74,6 +74,6 @@ describe('MessageGenerator', async () => {
     const generateButton = screen.getByTestId('generate-button');
     await user.click(generateButton);
 
-    expect(spy).toHaveBeenCalledWith('friend', ['행복']);
+    expect(spy).toHaveBeenCalledWith({ mode: 'friend', keywords: ['행복'] });
   });
 });
