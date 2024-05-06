@@ -1,4 +1,4 @@
-import createStyles from '@/shared/createStyles';
+import createStyles from '@/shared/styles/createStyles';
 
 const styles = createStyles({
   main: {
