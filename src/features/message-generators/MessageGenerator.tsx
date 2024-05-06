@@ -1,8 +1,11 @@
 'use client';
-
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 
 type GeneratingMode = 'friend' | 'family' | 'work' | 'lover';
+interface Keyword {
+  value: string;
+}
+
 const options: { label: string; value: GeneratingMode }[] = [
   { label: '친구', value: 'friend' },
   { label: '가족', value: 'family' },
@@ -10,15 +13,7 @@ const options: { label: string; value: GeneratingMode }[] = [
   { label: '연인', value: 'lover' },
 ];
 
-interface Keyword {
-  value: string;
-}
-
-const MessageGenerator = ({
-  onSubmit,
-}: {
-  onSubmit?: (args: { mode: GeneratingMode; keywords: string[] }) => void;
-}) => {
+const MessageGenerator = () => {
   const [mode, setMode] = useState<GeneratingMode>('friend');
   const [keywords, setKeywords] = useState<Keyword[]>([]);
 
@@ -41,9 +36,29 @@ const MessageGenerator = ({
       setKeywords(newKeywords);
     };
 
-  const handleClickToGenerate = () => {
+  const generateMessage = async (args: {
+    mode: string;
+    keywords: string[];
+  }) => {
+    const res = await fetch('/api/openai', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(args),
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      console.log(data.message);
+    } else {
+      console.error('Failed to generate message');
+    }
+  };
+
+  const handleClickToGenerate = async () => {
     const keywordValues = keywords.map((keyword) => keyword.value);
-    onSubmit?.({ mode, keywords: keywordValues });
+    await generateMessage({ mode, keywords: keywordValues });
   };
 
   return (

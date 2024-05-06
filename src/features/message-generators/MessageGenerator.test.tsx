@@ -62,8 +62,8 @@ describe('MessageGenerator', async () => {
   });
 
   it('생성 버튼을 클릭하여 선택한 대상과 키워드들을 포함해서 함수를 호출할 수 있다.', async () => {
-    const spy = vi.fn();
-    const { user } = await render(<MessageGenerator onSubmit={spy} />);
+    const spy = vi.spyOn(global, 'fetch');
+    const { user } = await render(<MessageGenerator />);
 
     const addButton = screen.getByTestId('add-keyword');
     await user.click(addButton);
@@ -74,6 +74,11 @@ describe('MessageGenerator', async () => {
     const generateButton = screen.getByTestId('generate-button');
     await user.click(generateButton);
 
-    expect(spy).toHaveBeenCalledWith({ mode: 'friend', keywords: ['행복'] });
+    // TODO: 구림 개선 필요
+    expect(spy).toHaveBeenCalledWith('/api/openai', {
+      body: JSON.stringify({ mode: 'friend', keywords: ['행복'] }),
+      headers: { 'Content-Type': 'application/json' },
+      method: 'POST',
+    });
   });
 });
