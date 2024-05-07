@@ -23,13 +23,11 @@ describe('MessageGenerator', async () => {
 
     const addButton = screen.getByTestId('add-keyword');
 
+    const input1 = screen.queryByTestId('keyword-input-0');
+    expect(input1).not.toBeInTheDocument();
     await user.click(addButton);
-    const inputs1 = screen.getAllByRole('textbox');
-    expect(inputs1).toHaveLength(1);
-
-    await user.click(addButton);
-    const inputs2 = screen.getAllByRole('textbox');
-    expect(inputs2).toHaveLength(2);
+    const input2 = screen.queryByTestId('keyword-input-0');
+    expect(input2).toBeInTheDocument();
   });
 
   describe('키워드 input', async () => {

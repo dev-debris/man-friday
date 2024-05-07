@@ -17,6 +17,7 @@ const options: { label: string; value: GeneratingMode }[] = [
 const MessageGenerator = () => {
   const [mode, setMode] = useState<GeneratingMode>('friend');
   const [keywords, setKeywords] = useState<Keyword[]>([]);
+  const [message, setMessage] = useState<string>('');
 
   const handleChangeMode = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setMode(event.target.value as GeneratingMode);
@@ -51,7 +52,7 @@ const MessageGenerator = () => {
 
     if (res.ok) {
       const data = await res.json();
-      console.log(data.message);
+      setMessage(JSON.stringify(data, null, 2));
     } else {
       console.error('Failed to generate message');
     }
@@ -60,6 +61,12 @@ const MessageGenerator = () => {
   const handleClickToGenerate = async () => {
     const keywordValues = keywords.map((keyword) => keyword.value);
     await generateMessage({ mode, keywords: keywordValues });
+  };
+
+  const handleChangeMessage = (
+    event: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    setMessage(event.target.value);
   };
 
   return (
@@ -86,6 +93,11 @@ const MessageGenerator = () => {
           </li>
         ))}
       </ul>
+      <textarea
+        value={message}
+        data-testid='generated-message'
+        onChange={handleChangeMessage}
+      />
       <button onClick={handleClickToGenerate} data-testid='generate-button'>
         생성
       </button>
