@@ -1,4 +1,5 @@
 'use client';
+import apiRoutes from '@/shared/api/apiRoutes';
 import { useState } from 'react';
 
 type GeneratingMode = 'friend' | 'family' | 'work' | 'lover';
@@ -40,7 +41,7 @@ const MessageGenerator = () => {
     mode: string;
     keywords: string[];
   }) => {
-    const res = await fetch('/api/openai', {
+    const res = await fetch(apiRoutes.openAIAutoMessage, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

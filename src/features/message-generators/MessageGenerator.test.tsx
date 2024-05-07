@@ -3,6 +3,7 @@ import { screen } from '@testing-library/react';
 
 import MessageGenerator from '@/features/message-generators/MessageGenerator';
 import render from '@/shared/tests/render';
+import apiRoutes from '@/shared/api/apiRoutes';
 
 describe('MessageGenerator', async () => {
   it('메시지 대상을 선택할 수 있다.', async () => {
@@ -75,7 +76,7 @@ describe('MessageGenerator', async () => {
     await user.click(generateButton);
 
     // TODO: 구림 개선 필요
-    expect(spy).toHaveBeenCalledWith('/api/openai', {
+    expect(spy).toHaveBeenCalledWith(apiRoutes.openAIAutoMessage, {
       body: JSON.stringify({ mode: 'friend', keywords: ['행복'] }),
       headers: { 'Content-Type': 'application/json' },
       method: 'POST',

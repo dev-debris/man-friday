@@ -1,9 +1,7 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import OpenAI from 'openai';
 
-const openai = new OpenAI({
-  // apiKey: process.env.OPEN_AI_API_KEY,
-});
+const openai = new OpenAI({ apiKey: process.env.OPEN_AI_API_KEY });
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
   const body = (await req.json()) as { mode: string; keywords: string[] };
