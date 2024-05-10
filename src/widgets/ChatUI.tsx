@@ -5,6 +5,7 @@ import React, { useState } from "react";
 interface Message {
   text: string;
   isUser: boolean;
+  timestamp: Date; 
 }
 
 const ChatUI: React.FC = () => {
@@ -13,7 +14,11 @@ const ChatUI: React.FC = () => {
 
   const handleMessageSend = () => {
     if (inputText.trim() === "") return;
-    const newMessage: Message = { text: inputText, isUser: true };
+    const newMessage: Message = {
+      text: inputText,
+      isUser: true,
+      timestamp: new Date(),
+    }; 
     setMessages([...messages, newMessage]);
     setInputText("");
   };
@@ -28,7 +33,10 @@ const ChatUI: React.FC = () => {
               message.isUser ? "user-message" : "bot-message"
             }`}
           >
-            {message.text}
+            <div className="message-text">{message.text}</div>
+            <div className="message-timestamp">
+              {message.timestamp.toLocaleString()}
+            </div>{" "}
           </div>
         ))}
       </div>
