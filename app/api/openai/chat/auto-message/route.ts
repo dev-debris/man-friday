@@ -12,7 +12,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       {
         role: 'system',
         content: `#ROLE
-You are speaking to a ${mode}. Given keywords, generate something to say in Korean.`,
+You are speaking to a ${mode}. The keywords given are words that describe your state or mood. Make up whatever you want to say in Korean.`,
       },
       {
         role: 'user',
@@ -22,9 +22,9 @@ ${keywords.join(' ')}`,
     ],
   });
 
-  console.log(completion.choices[0]);
+  console.log(JSON.stringify(completion, null, 2));
 
   return NextResponse.json({
-    message: completion.choices[0],
+    ...completion.choices[0],
   });
 }

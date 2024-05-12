@@ -1,4 +1,5 @@
 'use client';
+import styles from '@/features/message-generators/styles.css';
 import apiRoutes from '@/shared/api/apiRoutes';
 import { useState } from 'react';
 
@@ -52,7 +53,7 @@ const MessageGenerator = () => {
 
     if (res.ok) {
       const data = await res.json();
-      setMessage(JSON.stringify(data, null, 2));
+      setMessage(data.message.content);
     } else {
       console.error('Failed to generate message');
     }
@@ -67,6 +68,17 @@ const MessageGenerator = () => {
     event: React.ChangeEvent<HTMLTextAreaElement>
   ) => {
     setMessage(event.target.value);
+  };
+
+  const handleClickToShare = async () => {
+    if (navigator.share) {
+      await navigator.share({
+        title: '채팅 메시지 생성기',
+        text: message,
+      });
+    } else {
+      console.error('Web Share API is not supported');
+    }
   };
 
   return (
@@ -98,9 +110,12 @@ const MessageGenerator = () => {
         data-testid='generated-message'
         onChange={handleChangeMessage}
       />
-      <button onClick={handleClickToGenerate} data-testid='generate-button'>
-        생성
-      </button>
+      <div className={styles.buttonGroup}>
+        <button onClick={handleClickToShare}>공유</button>
+        <button onClick={handleClickToGenerate} data-testid='generate-button'>
+          생성
+        </button>
+      </div>
     </div>
   );
 };
