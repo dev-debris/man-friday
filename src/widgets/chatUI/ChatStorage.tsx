@@ -1,4 +1,5 @@
-import { saveToLocalStorage, loadFromLocalStorage } from '../../shared/utils/storage';
+import { db } from "../../firebase";
+import { collection, doc, setDoc, getDocs } from "firebase/firestore";
 
 interface Message {
   text: string;
@@ -6,38 +7,31 @@ interface Message {
   timestamp: Date;
 }
 
-const CHAT_HISTORY_KEY_PREFIX = 'chatHistory_';
+const CHAT_COLLECTION = "chats";
 
-const getDateKey = (date: Date): string => {
-  return date.toDateString();
-};
-
-export const saveChatHistory = (messages: Message[]) => {
+export const saveChatHistory = async (messages: Message[]) => {
   const groupedMessages: { [key: string]: Message[] } = {};
 
-  messages.forEach(message => {
-    const dateKey = getDateKey(message.timestamp);
+  messages.forEach((message) => {
+    const dateKey = message.timestamp.toDateString();
     if (!groupedMessages[dateKey]) {
       groupedMessages[dateKey] = [];
     }
     groupedMessages[dateKey].push(message);
   });
 
-  Object.keys(groupedMessages).forEach(dateKey => {
-    saveToLocalStorage({ key: `${CHAT_HISTORY_KEY_PREFIX}${dateKey}`, value: groupedMessages[dateKey] });
-  });
+  for (const dateKey in groupedMessages) {
+    const chatDocRef = doc(collection(db, CHAT_COLLECTION), dateKey);
+    await setDoc(chatDocRef, { messages: groupedMessages[dateKey] });
+  }
 };
 
-export const loadChatHistory = (): Message[] => {
+export const loadChatHistory = async (): Promise<Message[]> => {
+  const querySnapshot = await getDocs(collection(db, CHAT_COLLECTION));
   const allMessages: Message[] = [];
-
-  for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-    if (key && key.startsWith(CHAT_HISTORY_KEY_PREFIX)) {
-      const messagesForDate = loadFromLocalStorage(key);
-      allMessages.push(...messagesForDate);
-    }
-  }
-
+  querySnapshot.forEach((doc) => {
+    const data = doc.data();
+    allMessages.push(...data.messages);
+  });
   return allMessages;
 };

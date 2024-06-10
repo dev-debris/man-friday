@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { saveChatHistory, loadChatHistory } from "./chatStorage";
+import { saveChatHistory, loadChatHistory } from "./ChatStorage";
 
 interface Message {
   text: string;
@@ -14,8 +14,12 @@ const ChatUI: React.FC = () => {
   const [inputText, setInputText] = useState<string>("");
 
   useEffect(() => {
-    const chatHistory = loadChatHistory();
-    setMessages(chatHistory);
+    const fetchChatHistory = async () => {
+      const chatHistory = await loadChatHistory();
+      setMessages(chatHistory);
+    };
+
+    fetchChatHistory();
   }, []);
 
   useEffect(() => {
