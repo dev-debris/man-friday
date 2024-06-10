@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { saveChatHistory, loadChatHistory } from "./ChatStorage";
+import { saveChatHistory, loadChatHistory } from "./chatStorage";
 
 interface Message {
   text: string;
