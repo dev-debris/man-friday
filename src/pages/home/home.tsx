@@ -1,6 +1,6 @@
 import MessageGenerator from "@/features/message-generators/MessageGenerator";
 import styles from "@/pages/home/home.css";
-import ChatUI from "@/widgets/ChatUI";
+import ChatUI from "@/widgets/chatUI/ChatUI";
 
 export default function HomePage() {
   return (
