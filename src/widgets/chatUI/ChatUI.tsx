@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { saveChatHistory, loadChatHistory } from "./ChatStorage";
 
 interface Message {
   text: string;
@@ -11,6 +12,32 @@ interface Message {
 const ChatUI: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputText, setInputText] = useState<string>("");
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchChatHistory = async () => {
+      try {
+        const chatHistory = await loadChatHistory();
+        setMessages(chatHistory);
+      } catch (error) {
+        setError("Failed to load chat history.");
+      }
+    };
+
+    fetchChatHistory();
+  }, []);
+
+  useEffect(() => {
+    const saveHistory = async () => {
+      try {
+        await saveChatHistory(messages);
+      } catch (error) {
+        setError("Failed to save chat history.");
+      }
+    };
+
+    saveHistory();
+  }, [messages]);
 
   const groupMessagesByDate = (messages: Message[]) => {
     const groupedMessages: { [key: string]: Message[] } = {};
@@ -41,6 +68,7 @@ const ChatUI: React.FC = () => {
 
   return (
     <div className="chat-container">
+      {error && <div className="error-message">{error}</div>}
       {Object.keys(groupedMessages).map((dateKey) => (
         <div key={dateKey} className="message-group">
           <div className="date-header">{dateKey}</div>
