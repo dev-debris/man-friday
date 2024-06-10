@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { saveChatHistory, loadChatHistory } from "./ChatStorage";
 
 interface Message {
   text: string;
@@ -11,6 +12,15 @@ interface Message {
 const ChatUI: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputText, setInputText] = useState<string>("");
+
+  useEffect(() => {
+    const chatHistory = loadChatHistory();
+    setMessages(chatHistory);
+  }, []);
+
+  useEffect(() => {
+    saveChatHistory(messages);
+  }, [messages]);
 
   const groupMessagesByDate = (messages: Message[]) => {
     const groupedMessages: { [key: string]: Message[] } = {};
